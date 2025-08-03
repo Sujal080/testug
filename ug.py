@@ -596,7 +596,6 @@ async def send_vid(bot: Client, m: Message, cc, filename, thumb, name, prog, cha
             if os.path.exists(temp_thumb):
                 spaced_text = ' '.join(watermark)
                 text_cmd = f'ffmpeg -i "{temp_thumb}" -vf "drawtext=fontfile=font.otf:text=\'{spaced_text}\':fontcolor=white:fontsize=90:x=(w-text_w)/2:y=60" -c:v mjpeg -q:v 2 -y "{temp_thumb}"'
-                subprocess.run(text_cmd, shell=True)
             thumbnail = temp_thumb if os.path.exists(temp_thumb) else None
             
         await prog.delete(True)
